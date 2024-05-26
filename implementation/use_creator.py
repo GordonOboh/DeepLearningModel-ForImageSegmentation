@@ -1,11 +1,11 @@
-## written by chatgpt as of may 26 2024, I haven't tested yet
+## written by chatgpt as of may 26 2024, tested and works as expected
 
 import os
 import csv
 
 # Specify the directory containing the images
 directory = './Your_DataSet'
-output_csv = 'use1.csv'
+output_csv = 'use.csv'
 
 # Create a list to hold the image file paths
 image_files = []
