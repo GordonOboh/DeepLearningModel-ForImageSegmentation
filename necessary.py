@@ -3,9 +3,11 @@ import numpy as np
 import torch
 import segmentation_models_pytorch as smp
 import albumentations as A
+import cv2
 from torch.utils.data import Dataset
 from torch import nn
 from segmentation_models_pytorch.losses import DiceLoss as DLoss
+
 
 class helper():
 
@@ -71,7 +73,7 @@ class albumentation_addon():
 
 class SegmentationModel(nn.Module):
 
-  def __init__(self, ENCODER, WEIGHTS)):
+  def __init__(self, ENCODER, WEIGHTS):
     super(SegmentationModel, self).__init__()
 
     self.arc = smp.Unet(
