@@ -1,5 +1,5 @@
 ## written by chatgpt as of may 26 2024, tested and works as expected
-
+## Used to generate use.csv
 import os
 import csv
 
