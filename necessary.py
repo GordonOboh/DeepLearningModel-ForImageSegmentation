@@ -10,17 +10,17 @@ from segmentation_models_pytorch.losses import DiceLoss as DLoss
 class helper():
 
   def __init__(self):
-    return 0
+    pass
 
-  def show_image(image,mask,pred_image = None):
-  return 0
+  def show_image(self, image,mask, pred_image = None):
+    return 0
 
 class albumentation_addon():
 
   def __init__(self):
-    return 0
+    pass
 
-  def get_valid_augs():
+  def get_valid_augs(self):
     return A.Compose([
         A.Resize(IMAGE_SIZE, IMAGE_SIZE),]
         , is_check_shapes=False)
@@ -43,7 +43,7 @@ class SegmentationModel(nn.Module):
     if masks != None:
       loss1 = DLoss(mode = 'binary')(logits, masks)
       loss2 = nn.BCEWithLogitsLoss()(logits, masks)
-      return logits, loss1 + loss2
+      return logits,!git clone https://github.com/parth1620/Human-Segmentation-Dataset-master.git loss1 + loss2
 
     return logits
 
@@ -81,4 +81,12 @@ class SegmentationDataset(Dataset):
     mask = torch.round(torch.Tensor(mask)/255.0)
 
     return image, mask
+
+class testing():
+  
+  def __init__(self):
+    pass
+
+  def hello():
+    print("hello from necessary")
 
