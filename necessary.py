@@ -12,15 +12,59 @@ class helper():
   def __init__(self):
     pass
 
-  def show_image(self, image,mask, pred_image = None):
-    return 0
+  #Test out .show_image(), written on 26 May 2024
+  def show_image(self, image, mask = None, image_from_model = None):
+    if mask == None:
+        if image_from_model == None:
+
+            f, ax1 = plt.subplots(1, 1, figsize=(10,5))
+
+            ax1.set_title('IMAGE')
+            ax1.imshow(image.permute(1,2,0).squeeze(),cmap = 'gray')
+
+        elif image_from_model != None :
+
+            f, (ax1, ax2) = plt.subplots(1, 2, figsize=(10,5))
+
+            ax1.set_title('IMAGE')
+            ax1.imshow(image.permute(1,2,0).squeeze(),cmap = 'gray')
+
+            ax2.set_title('MODEL OUTPUT')
+            ax2.imshow(image_from_model.permute(1,2,0).squeeze(),cmap = 'gray')
+
+    else:
+        if image_from_model == None:
+
+            f, (ax1, ax2) = plt.subplots(1, 2, figsize=(10,5))
+
+            ax1.set_title('IMAGE')
+            ax1.imshow(image.permute(1,2,0).squeeze(),cmap = 'gray')
+
+            ax2.set_title('GROUND TRUTH')
+            ax2.imshow(mask.permute(1,2,0).squeeze(),cmap = 'gray')
+
+        elif image_from_model != None :
+
+            f, (ax1, ax2,ax3) = plt.subplots(1, 3, figsize=(15,5))
+
+            ax1.set_title('IMAGE')
+            ax1.imshow(image.permute(1,2,0).squeeze(),cmap = 'gray')
+
+            ax2.set_title('GROUND TRUTH')
+            ax2.imshow(mask.permute(1,2,0).squeeze(),cmap = 'gray')
+
+            ax3.set_title('MODEL OUTPUT')
+            ax3.imshow(image_from_model.permute(1,2,0).squeeze(),cmap = 'gray')
+        #return 0
+
 
 class albumentation_addon():
 
   def __init__(self):
+    #self.IMAGE_SIZE = IMAGE_SIZE
     pass
 
-  def get_valid_augs(self):
+  def get_valid_augs(self, IMAGE_SIZE = 320):
     return A.Compose([
         A.Resize(IMAGE_SIZE, IMAGE_SIZE),]
         , is_check_shapes=False)
@@ -43,7 +87,7 @@ class SegmentationModel(nn.Module):
     if masks != None:
       loss1 = DLoss(mode = 'binary')(logits, masks)
       loss2 = nn.BCEWithLogitsLoss()(logits, masks)
-      return logits,!git clone https://github.com/parth1620/Human-Segmentation-Dataset-master.git loss1 + loss2
+      return logits, loss1 + loss2
 
     return logits
 
