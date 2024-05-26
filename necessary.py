@@ -71,7 +71,7 @@ class albumentation_addon():
 
 class SegmentationModel(nn.Module):
 
-  def __init__(self):
+  def __init__(self, ENCODER, WEIGHTS)):
     super(SegmentationModel, self).__init__()
 
     self.arc = smp.Unet(
