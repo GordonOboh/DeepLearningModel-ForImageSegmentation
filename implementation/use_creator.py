@@ -4,7 +4,7 @@ import os
 import csv
 
 # Specify the directory containing the images
-directory = '~/Your_DataSet'
+directory = './Your_DataSet'
 output_csv = 'use1.csv'
 
 # Create a list to hold the image file paths
